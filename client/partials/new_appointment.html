@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<div ng-controller = 'sessionController'>
+<div ng-controller = 'appointmentsController'>
+<body>
+<a href="/logout">Logout</a>
+<h3>Hello {{currentUser.name}}!</h3>
+<h2>New Appointment</h2>
+<form>
+	<label>Date: </label><input type="date" ng-model="new_appt.date">
+	<label>Time: </label><input type="time" ng-model="new_appt.time">
+	<label>Complaint: </label><input type="textarea" ng-model="new_appt.complaint">
+	<a href="#/dashboard"><button>Cancel</button></a>
+	<input type="submit" value="Add Appointment" ng-click="create(currentUser.name)">
+	
+</form>
+
+</body>
+</div>
+</div>
+</html>

@@ -1,0 +1,37 @@
+
+<body>
+<a href="/logout">Logout</a>
+<div ng-controller = 'sessionController'>
+<h2>Doctor's Appointments</h2>
+
+<h3>Hello {{currentUser.name}}!</h3>
+
+<div ng-controller = 'appointmentsController'>
+{{appointments.appointments}}
+{{appointment}}
+{{data}}
+
+<br>
+<input ng-model='appointment_filter' placeholder="Search Appointments">
+<table border = '1'>
+	<tr>
+		<th>Date</th>
+		<th>Time</th>
+		<th>Patient Name</th>
+		<th>Complaint</th>
+	</tr>
+	
+	<tr ng-repeat = 'x in appt |filter:{name:appointment_filter} |orderBy:"date"'>
+		<td>{{x.date| date:'longDate'}}</td>
+		<td>{{x.hour}}:<span ng-if ="x.minute <= 9">0</span>{{x.minute}}</td>
+		<td>{{x.name}}</td>
+		<td>{{x.complaint}}</td>
+		<td ng-if = 'x.name === currentUser.name'>
+			<button ng-click='deleteAppt(x._id, x.name)'>Cancel</button>
+		</td>
+	</tr>
+</table>
+<a href="#/new_appointment"><button>Add an Appointment</button></a>
+
+</body>
+</html>
